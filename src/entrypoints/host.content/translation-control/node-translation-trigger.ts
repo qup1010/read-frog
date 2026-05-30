@@ -237,7 +237,6 @@ export function registerNodeTranslationTriggerListeners({
         if (!isHotkeyPressed) {
           isHotkeyPressed = true
           activeHotkeyEventKey = hotkeyEventKey
-          const holdTriggerMs = config.translate.node.holdTriggerMs ?? DEFAULT_NODE_TRANSLATION_HOLD_TRIGGER_MS
           timerId = setTimeout(() => {
             void (async () => {
               if (shouldIgnoreEvent())
@@ -261,7 +260,7 @@ export function registerNodeTranslationTriggerListeners({
               actionTriggered = true
               timerId = null
             })()
-          }, holdTriggerMs)
+          }, DEFAULT_NODE_TRANSLATION_HOLD_TRIGGER_MS)
 
           if (!isHotkeySessionPure && timerId) {
             clearTimeout(timerId)

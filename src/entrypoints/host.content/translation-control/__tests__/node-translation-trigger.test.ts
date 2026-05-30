@@ -188,7 +188,7 @@ describe("registerNodeTranslationTriggerListeners", () => {
     const onTrigger = vi.fn()
 
     teardown = registerNodeTranslationTriggerListeners({
-      getConfig: () => Promise.resolve(createConfig("control")),
+      getConfig: () => Promise.resolve(createConfig("control", 200)),
       onTrigger,
     })
 
@@ -212,7 +212,7 @@ describe("registerNodeTranslationTriggerListeners", () => {
       { x: 70, y: 80 },
       expect.objectContaining({
         translate: expect.objectContaining({
-          node: expect.objectContaining({ hotkey: "control" }),
+          node: expect.objectContaining({ hotkey: "control", holdTriggerMs: 200 }),
         }),
       }),
     )
